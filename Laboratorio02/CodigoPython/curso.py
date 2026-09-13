@@ -24,3 +24,5 @@ class Curso:
 
     def __str__(self):
         return f"Curso: {self.nombre} , horario: {self.horario}"
+
+    __repr__ = __str__

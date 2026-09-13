@@ -26,4 +26,5 @@ class Universidad:
         self.cursos.append(curso)
 
     def __str__(self):
-        return f"Universidad: {self.nombre} , cursos: {self.cursos}"
+        cursos_texto = ", ".join(str(curso) for curso in self.cursos)
+        return f"Universidad: {self.nombre} , cursos: [{cursos_texto}]"
