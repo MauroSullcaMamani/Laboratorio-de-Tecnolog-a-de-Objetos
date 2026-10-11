@@ -1,0 +1,16 @@
+# ninja log v5
+24	138	8133616524651628	Actividades_autogen/timestamp	7f7206d8fb7ad6c8
+24	138	8133616524651628	Actividades_autogen/mocs_compilation.cpp	7f7206d8fb7ad6c8
+24	138	8133616524651628	C:/Users/Mauro Snayder/Documents/Actividades/build/Desktop_Qt_6_12_0_MinGW_64_bit_Debug/Actividades_autogen/timestamp	7f7206d8fb7ad6c8
+24	138	8133616524651628	C:/Users/Mauro Snayder/Documents/Actividades/build/Desktop_Qt_6_12_0_MinGW_64_bit_Debug/Actividades_autogen/mocs_compilation.cpp	7f7206d8fb7ad6c8
+179	240	8133613547206134	CMakeFiles/Actividades.dir/Actividades_autogen/mocs_compilation.cpp.obj	9dc0999fa49c74d7
+142	1181	8133616582961203	CMakeFiles/Actividades.dir/main.cpp.obj	503f53e0ff9e4a83
+1181	1285	8133616583980611	Actividades.exe	46fd24492d820631
+19	444	8133625850549097	Actividades_autogen/timestamp	7f7206d8fb7ad6c8
+19	444	8133625850549097	Actividades_autogen/mocs_compilation.cpp	7f7206d8fb7ad6c8
+19	444	8133625850549097	C:/Users/Mauro Snayder/Documents/Actividades/build/Desktop_Qt_6_12_0_MinGW_64_bit_Debug/Actividades_autogen/timestamp	7f7206d8fb7ad6c8
+19	444	8133625850549097	C:/Users/Mauro Snayder/Documents/Actividades/build/Desktop_Qt_6_12_0_MinGW_64_bit_Debug/Actividades_autogen/mocs_compilation.cpp	7f7206d8fb7ad6c8
+449	1469	8133625861338341	CMakeFiles/Actividades.dir/main.cpp.obj	503f53e0ff9e4a83
+445	1547	8133625862122338	CMakeFiles/Actividades.dir/Actividades_autogen/mocs_compilation.cpp.obj	9dc0999fa49c74d7
+454	1554	8133625862184343	CMakeFiles/Actividades.dir/Comunicacion.cpp.obj	9749cb4072f316c9
+1554	1682	8133625863445655	Actividades.exe	6c5a9db08435e168
