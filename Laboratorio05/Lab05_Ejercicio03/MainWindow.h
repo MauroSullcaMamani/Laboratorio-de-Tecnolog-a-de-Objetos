@@ -2,10 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QString>
 
-class QLabel;
-class QListWidget;
+QT_BEGIN_NAMESPACE
+namespace Ui {
+class MainWindow;
+}
+QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
 {
@@ -13,13 +15,12 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
+    ~MainWindow() override;
 
 private slots:
-    void mostrarDatos(const QString &pais);
+    void mostrarInformacion(const QString &pais);
 
 private:
-    QListWidget *listaPaises;
-    QLabel *detallePais;
+    Ui::MainWindow *ui;
 };
-
-#endif
+#endif // MAINWINDOW_H
