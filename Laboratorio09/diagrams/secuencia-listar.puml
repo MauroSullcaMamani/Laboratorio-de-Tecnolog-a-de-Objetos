@@ -1,0 +1,13 @@
+@startuml
+actor Usuario
+participant VistaConsola as Vista
+participant ActividadController as Controlador
+participant IRepositorioActividades as Repositorio
+
+Usuario -> Vista : selecciona Listar
+Vista -> Controlador : listar()
+Controlador -> Repositorio : listar()
+Repositorio --> Controlador : registros
+Controlador --> Vista : registros
+Vista --> Usuario : muestra actividades
+@enduml
