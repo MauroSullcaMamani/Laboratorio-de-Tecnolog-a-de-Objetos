@@ -2,20 +2,20 @@
 actor Usuario
 participant VistaConsola as Vista
 participant ActividadController as Controlador
-participant AdaptadorCsvAntiguo as Adapter
-participant FuenteCsvAntigua as Fuente
-participant ActividadFactory as Fabrica
+participant AdaptadorImportacionCsv as Adapter
+participant LectorCsvImportacion as Lector
+participant CreadorActividad as Creador
 participant IRepositorioActividades as Repositorio
 
-Usuario -> Vista : selecciona Importar CSV
-Vista -> Controlador : importarCsvAntiguo()
+Usuario -> Vista : solicita importar CSV
+Vista -> Controlador : importarCsv()
 Controlador -> Adapter : importar()
-Adapter -> Fuente : leer()
-Fuente --> Adapter : filas heredadas
-loop por fila
-  Adapter -> Fabrica : crear(tipo normalizado, datos)
-  Fabrica --> Adapter : Actividad
-  Adapter -> Repositorio : guardar(actividad.registro())
+Adapter -> Lector : leer()
+Lector --> Adapter : filas de origen
+loop por cada fila
+  Adapter -> Creador : crear(datos convertidos)
+  Creador --> Adapter : Actividad
+  Adapter -> Repositorio : guardar(actividad)
 end
 Adapter --> Controlador : cantidad importada
 Controlador --> Vista : cantidad importada

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "patterns/ActividadFactory.hpp"
-#include "persistence/IImportadorActividades.hpp"
+#include "patterns/CreadorActividad.hpp"
+#include "persistence/IImportadorCsv.hpp"
 #include "persistence/IRepositorioActividades.hpp"
 
 #include <string>
@@ -10,9 +10,8 @@
 class ActividadController {
 public:
     ActividadController(
-        ActividadFactory& fabrica,
         IRepositorioActividades& repositorio,
-        IImportadorActividades& importador
+        IImportadorCsv& importador
     );
     std::string crear(
         const std::string& tipo,
@@ -22,10 +21,9 @@ public:
         const std::string& detalle
     );
     std::vector<RegistroActividad> listar() const;
-    std::size_t importarCsvAntiguo() const;
+    std::size_t importarCsv() const;
 
 private:
-    ActividadFactory& fabrica_;
     IRepositorioActividades& repositorio_;
-    IImportadorActividades& importador_;
+    IImportadorCsv& importador_;
 };

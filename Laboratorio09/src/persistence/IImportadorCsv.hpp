@@ -2,8 +2,8 @@
 
 #include <cstddef>
 
-class IImportadorActividades {
+class IImportadorCsv {
 public:
-    virtual ~IImportadorActividades() = default;
+    virtual ~IImportadorCsv() = default;
     virtual std::size_t importar() const = 0;
 };

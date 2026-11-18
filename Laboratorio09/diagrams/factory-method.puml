@@ -1,0 +1,24 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+
+abstract class Actividad <<Product>> {
+  + tipo() : string
+}
+class Tarea <<ConcreteProduct>>
+
+abstract class CreadorActividad <<Creator>> {
+  + crear(datos) : Actividad
+  # factoryMethod(datos) : Actividad
+}
+class CreadorTarea <<ConcreteCreator>>
+
+Actividad <|-- Tarea
+CreadorActividad <|-- CreadorTarea
+CreadorActividad ..> Actividad : crear llama a factoryMethod
+CreadorTarea ..> Tarea : factoryMethod
+note bottom of CreadorTarea
+  El mismo esquema se aplica a
+  CreadorExamen y CreadorProyecto.
+end note
+@enduml

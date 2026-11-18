@@ -12,5 +12,5 @@ private:
     void mostrarMenu() const;
     void crearActividad();
     void listarActividades() const;
-    void importarCsvAntiguo() const;
+    void importarCsv() const;
 };

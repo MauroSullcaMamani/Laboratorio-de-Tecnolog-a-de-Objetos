@@ -1,0 +1,29 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+
+package MVC {
+  class VistaConsola
+  class ActividadController
+  interface IRepositorioActividades
+  class RepositorioCsv
+  class Actividad
+}
+
+package "Importación CSV" {
+  interface IImportadorCsv
+  class AdaptadorImportacionCsv
+  class LectorCsvImportacion
+  class FilaCsvImportacion
+}
+
+VistaConsola --> ActividadController
+ActividadController --> IRepositorioActividades
+ActividadController --> IImportadorCsv
+IRepositorioActividades <|.. RepositorioCsv
+IImportadorCsv <|.. AdaptadorImportacionCsv
+AdaptadorImportacionCsv --> LectorCsvImportacion : lee filas
+AdaptadorImportacionCsv --> IRepositorioActividades : convierte y guarda
+LectorCsvImportacion ..> FilaCsvImportacion
+RepositorioCsv ..> Actividad : persiste
+@enduml

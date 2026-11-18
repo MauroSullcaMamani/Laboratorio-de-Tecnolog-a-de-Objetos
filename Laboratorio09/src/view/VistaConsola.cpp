@@ -17,7 +17,7 @@ int VistaConsola::ejecutar() {
             } else if (opcion == "2") {
                 listarActividades();
             } else if (opcion == "3") {
-                importarCsvAntiguo();
+                importarCsv();
             } else if (opcion != "0") {
                 std::cout << "Opción no válida.\n";
             }
@@ -32,7 +32,7 @@ void VistaConsola::mostrarMenu() const {
     std::cout << "\nSEGUIMIENTO ACADÉMICO\n"
               << "1. Crear actividad\n"
               << "2. Listar actividades\n"
-              << "3. Importar CSV heredado\n"
+              << "3. Importar CSV de origen\n"
               << "0. Salir\n"
               << "Opción: ";
 }
@@ -68,7 +68,7 @@ void VistaConsola::listarActividades() const {
     }
 }
 
-void VistaConsola::importarCsvAntiguo() const {
-    const auto total = controlador_.importarCsvAntiguo();
+void VistaConsola::importarCsv() const {
+    const auto total = controlador_.importarCsv();
     std::cout << "Registros importados: " << total << '\n';
 }

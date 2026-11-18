@@ -3,10 +3,9 @@
 #include <utility>
 
 ActividadController::ActividadController(
-    ActividadFactory& fabrica,
     IRepositorioActividades& repositorio,
-    IImportadorActividades& importador
-) : fabrica_(fabrica), repositorio_(repositorio), importador_(importador) {}
+    IImportadorCsv& importador
+) : repositorio_(repositorio), importador_(importador) {}
 
 std::string ActividadController::crear(
     const std::string& tipo,
@@ -15,7 +14,7 @@ std::string ActividadController::crear(
     const std::string& fecha,
     const std::string& detalle
 ) {
-    const auto actividad = fabrica_.crear(tipo, id, titulo, fecha, detalle);
+    const auto actividad = creadorPara(tipo).crear(id, titulo, fecha, detalle);
     repositorio_.guardar(actividad->registro());
     return "Actividad creada: " + actividad->titulo();
 }
@@ -24,6 +23,6 @@ std::vector<RegistroActividad> ActividadController::listar() const {
     return repositorio_.listar();
 }
 
-std::size_t ActividadController::importarCsvAntiguo() const {
+std::size_t ActividadController::importarCsv() const {
     return importador_.importar();
 }

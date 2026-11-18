@@ -1,16 +1,15 @@
-#include "patterns/AdaptadorCsvAntiguo.hpp"
+#include "patterns/AdaptadorImportacionCsv.hpp"
 
 #include <algorithm>
 #include <cctype>
 
-AdaptadorCsvAntiguo::AdaptadorCsvAntiguo(
-    const FuenteCsvAntigua& fuente,
-    IRepositorioActividades& repositorio,
-    const ActividadFactory& fabrica
-) : fuente_(fuente), repositorio_(repositorio), fabrica_(fabrica) {}
+AdaptadorImportacionCsv::AdaptadorImportacionCsv(
+    const LectorCsvImportacion& lector,
+    IRepositorioActividades& repositorio
+) : lector_(lector), repositorio_(repositorio) {}
 
-std::size_t AdaptadorCsvAntiguo::importar() const {
-    const auto registros = fuente_.leer();
+std::size_t AdaptadorImportacionCsv::importar() const {
+    const auto registros = lector_.leer();
     std::size_t importados = 0;
     for (const auto& registro : registros) {
         std::string tipo = registro.clase;
@@ -24,8 +23,7 @@ std::size_t AdaptadorCsvAntiguo::importar() const {
         } else if (tipo == "PROYECTO") {
             tipo = "Proyecto";
         }
-        const auto actividad = fabrica_.crear(
-            tipo,
+        const auto actividad = creadorPara(tipo).crear(
             registro.codigo,
             registro.nombre,
             registro.fecha_limite,
@@ -37,10 +35,3 @@ std::size_t AdaptadorCsvAntiguo::importar() const {
     return importados;
 }
 
-void AdaptadorCsvAntiguo::guardar(const RegistroActividad& actividad) {
-    repositorio_.guardar(actividad);
-}
-
-std::vector<RegistroActividad> AdaptadorCsvAntiguo::listar() const {
-    return repositorio_.listar();
-}

@@ -1,30 +1,26 @@
 # Laboratorio 09: seguimiento académico
 
-Material de entrega: informe PDF, código fuente C++, pruebas, diagramas UML y evidencias de ejecución. La aplicación es de consola y organiza sus responsabilidades con MVC, Factory Method y Adapter.
+Aplicación C++ de consola para registrar y consultar tareas, exámenes y proyectos. Separa Vista, Controlador y Modelo, aplica Factory Method para crear actividades y Adapter para importar filas CSV. No utiliza Qt.
 
-## Compilar y probar
+## Compilar y ejecutar
 
-Requisitos: GCC 16.2.1 y CMake 4.5.0.
+Requiere CMake 3.20 o superior y un compilador con soporte para C++17 o posterior.
 
 ```bash
 cmake -S . -B build
 cmake --build build
 ctest --test-dir build --output-on-failure
+./build/seguimiento data/actividades.csv
 ```
 
-## Ejecutar
+El menú permite crear y listar actividades e importar `data/actividades_importar.csv`. Al crear una actividad se solicita tipo, código, título, fecha (`AAAA-MM-DD`) y detalle. El archivo pasado como argumento guarda los registros actuales.
 
-```bash
-./build/seguimiento data/actividades-demo.csv
-```
+## Archivos
 
-El menú permite crear y listar tareas, exámenes y proyectos, e importar `data/actividades_legacy.csv`.
-
-## Contenido
-
-- `submission/Informe_09.pdf`: informe completo.
-- `submission/Código Fuente_09.zip`: paquete de código entregable.
-- `src/`: implementación C++ y pruebas del Modelo, Controlador y Adapter.
-- `diagrams/`: fuentes PlantUML; `images/`: diagramas renderizados y capturas.
-- `evidencias/demo.mp4`: demostración breve de los flujos y pruebas.
-- `data/actividades_legacy.csv`: datos de ejemplo para la importación.
+- `src/model/`: productos y entidades del Modelo.
+- `src/patterns/CreadorActividad.*`: Creator y Concrete Creators de Factory Method.
+- `src/patterns/AdaptadorImportacionCsv.*`: Adapter para importar filas al repositorio actual.
+- `src/controller/` y `src/view/`: coordinación MVC e interfaz de consola.
+- `diagrams/` e `images/`: fuentes de diagramas y sus imágenes renderizadas.
+- `evidencias/` e `images/`: demostración y capturas de ejecución.
+- `submission/`: informe y paquete de código entregados.

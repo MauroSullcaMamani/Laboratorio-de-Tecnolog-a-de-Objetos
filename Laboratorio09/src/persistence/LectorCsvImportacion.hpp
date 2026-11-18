@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-struct RegistroCsvAntiguo {
+struct FilaCsvImportacion {
     std::string codigo;
     std::string nombre;
     std::string fecha_limite;
@@ -12,10 +12,10 @@ struct RegistroCsvAntiguo {
     std::string detalle;
 };
 
-class FuenteCsvAntigua {
+class LectorCsvImportacion {
 public:
-    explicit FuenteCsvAntigua(std::filesystem::path archivo);
-    std::vector<RegistroCsvAntiguo> leer() const;
+    explicit LectorCsvImportacion(std::filesystem::path archivo);
+    std::vector<FilaCsvImportacion> leer() const;
 
 private:
     std::filesystem::path archivo_;

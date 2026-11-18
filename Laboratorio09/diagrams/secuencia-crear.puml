@@ -2,18 +2,16 @@
 actor Usuario
 participant VistaConsola as Vista
 participant ActividadController as Controlador
-participant ActividadFactory as Fabrica
-participant ActividadCreator as Creador
+participant CreadorTarea as Creador
+participant Actividad as Producto
 participant IRepositorioActividades as Repositorio
 
-Usuario -> Vista : selecciona Crear y completa datos
+Usuario -> Vista : ingresa tipo y datos
 Vista -> Controlador : crear(tipo, datos)
-Controlador -> Fabrica : crear(tipo, datos)
-Fabrica -> Creador : crear(datos)
-Creador --> Fabrica : Actividad concreta
-Fabrica --> Controlador : Actividad
-Controlador -> Repositorio : guardar(actividad.registro())
-Repositorio --> Controlador : confirmación
-Controlador --> Vista : mensaje de creación
+Controlador -> Creador : crear(datos)
+Creador -> Creador : factoryMethod(datos)
+Creador --> Controlador : Tarea
+Controlador -> Repositorio : guardar(Tarea)
+Controlador --> Vista : confirmación
 Vista --> Usuario : muestra resultado
 @enduml
